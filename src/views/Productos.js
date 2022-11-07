@@ -3,7 +3,7 @@ import ListaCards from "../components/ListaCards";
 const Productos = () => {
     return (
       <div>
-        <ListaCards/>
+        <ListaCards lim={10} lim2={20} lim3={40}/>
       </div>
     );
 }

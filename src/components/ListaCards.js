@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 //import { getProductos } from "../services/sanitarioService";
 
-const ListaCards = () => {
+const ListaCards = (props) => {
     const [productos, setProductos] = useState([])
 
     useEffect(() =>{
@@ -15,7 +15,6 @@ const ListaCards = () => {
       }
 
       obtenerProductos()
-
     },[]);
 
     return (
@@ -25,7 +24,7 @@ const ListaCards = () => {
               <div className="row">
               <div className="col-12 col-md-4 py-4">
                 {productos.map((producto) => {
-                  if(producto.id < 10) {
+                  if(producto.id < props.lim+1) {
                     return(
                       <Card key={producto.id} images={producto.thumbnail} title={producto.title} description={producto.description} id={producto.id}/>
                     )
@@ -40,7 +39,7 @@ const ListaCards = () => {
 
               <div className="col-12 col-md-4 py-4">
               {productos.map((producto) => {
-                  if(producto.id > 10 && producto.id < 20){
+                  if(producto.id > props.lim && producto.id < props.lim2+1){
                     return(
                       <Card key={producto.id} images={producto.thumbnail} title={producto.title} description={producto.description} id={producto.id}/>
                     )
@@ -51,7 +50,7 @@ const ListaCards = () => {
 
               <div className="col-12 col-md-4 py-4">
               {productos.map((producto) => {
-                  if(producto.id > 20) {
+                  if(producto.id > props.lim2 && producto.id < props.lim3) {
                     return(
                       <Card key={producto.id} images={producto.thumbnail} title={producto.title} description={producto.description} id={producto.id}/>
                     )

@@ -1,9 +1,10 @@
 import React from "react";
+import Formulario from "../components/Form";
 
 const Contacto = () => {
     return (
       <div className="container">
-        <h1>Formulario:</h1>
+        <Formulario/>
       </div>
     );
 }
