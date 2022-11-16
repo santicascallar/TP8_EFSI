@@ -16,7 +16,6 @@ const Card = (props) => {
                 <p className="card-text">{props.description}</p>
                 
                 <button onClick={()=>redirigir(`/${props.id}`)} className="btn btn-primary">Detalles</button>
-                <button className="btn btn-primary">Agregar</button>
             </div>
     </div>
     );
