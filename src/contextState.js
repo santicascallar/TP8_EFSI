@@ -5,18 +5,18 @@ export const initialState = {
 }
 
 export const ActionTypes = {
-    AñadirAlCarrito: "AÑADIR_AL_CARRITO",
-    QuitarDelCarrito: "QUITAR_DEL_CARRITO"
+    AgregarCarrito: "AGREGAR_CARRITO",
+    EliminarCarrito: "ELIMINAR_CARRITO",
 }
 
 export const reducer = (state = {}, action) => {
     switch (action.type){
-        case ActionTypes.AñadirAlCarrito:
+        case ActionTypes.AgregarCarrito:
             return {
                 ...state,
                 carrito: [...state.carrito, action.value],
             };
-        case ActionTypes.QuitarDelCarrito:
+        case ActionTypes.EliminarCarrito:
             let newCarrito = state.carrito.filter(carrito => carrito?.id!=action.value?.id)
             return {
                 ...state,

@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../imgs/Logo.png";
+import { useContextState } from '../contextState';
 
 const Navbar = () => {
+    const { contextState, setContextState } = useContextState();
+
     return(
         <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,7 +30,7 @@ const Navbar = () => {
               <Link className="nav-link" to="/Contacto">CONTACTO</Link>
               </li>
               <li className="nav-item active">
-              <Link className="nav-link" to="/CarritoCompras">CARRITO</Link>
+              <Link className="nav-link" to="/CarritoCompras">CARRITO: {contextState.carrito.length}</Link> 
               </li>
             </ul>
           </div>

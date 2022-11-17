@@ -8,10 +8,12 @@ import ProductoDetalle from './views/ProductoDetalle';
 import Contacto from './views/Contacto';
 import CarritoCompras from './views/CarritoCompras';
 import Layout from './components/Layout';
+import { ContextProvider } from '../src/contextState';
 
 function App() {
   return (
     <div>
+      <ContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -24,6 +26,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </ContextProvider>
     </div>
   );
 }
