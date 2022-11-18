@@ -17,10 +17,10 @@ export const reducer = (state = {}, action) => {
                 carrito: [...state.carrito, action.value],
             };
         case ActionTypes.EliminarCarrito:
-            let newCarrito = state.carrito.filter(carrito => carrito?.id!=action.value?.id)
+            let carritoUpdate = state.carrito.filter((carr) => carr.id !== action.value.id)
             return {
                 ...state,
-                carrito: newCarrito
+                carrito: carritoUpdate
             };
         default:
             return state;

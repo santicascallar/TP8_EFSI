@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import PropTypes from 'prop-types';
+import { CardShape } from "../shapes/CardShape";
 
 const Card = (props) => {
     let navigate = useNavigate();
@@ -22,10 +22,7 @@ const Card = (props) => {
 }
 
 Card.propTypes = {
-    images: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-};
+    props: CardShape
+}
 
 export default Card;

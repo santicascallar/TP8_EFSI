@@ -4,11 +4,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { ActionTypes, useContextState } from '../contextState';
 
-
 const ProductoDetalle = () => {
     const { productoId } = useParams();
     const [producto, setProducto] = useState([]);
-    const [productoAgregado ,setProductoAgregado] = useState ([]);
 
     const { contextState, setContextState } = useContextState();
 
@@ -17,26 +15,13 @@ const ProductoDetalle = () => {
       .then(function (response) {
         setProducto(response.data);
       })
-    },[])
+    },[productoId])
 
-    /*useEffect(() =>{
-      
-      const obtenerProducto = async () => {
-
-        const url = `https://dummyjson.com/products/${productoId}`;
-        const result = await axios.get(url);
-        setProducto(result.data);
-      }
-
-      obtenerProducto()
-      
-    },[productoId]);*/
-
-    const productoAsignado = contextState.carrito.find(item => item.id === producto.id)
+    const productoAsignado = contextState.carrito.find(product => product.id === producto.id)
 
     const agregarCarrito = () => {
       if(productoAsignado){
-        alert("Cantidad de platos maximos alcanzado")
+        alert("Este producto ya esta en el carrito")
       }
       else{
         setContextState({
@@ -44,21 +29,14 @@ const ProductoDetalle = () => {
           value: producto,
         })
       }
-      
-      //setProductoAgregado(contextState.carrito.id)
-      console.log(productoAsignado)
-      console.log(productoId)
-      console.log(contextState)
-      //console.log(productoAgregado)
     }
-
-    
 
     const eliminarCarrito = () => {
       setContextState({
         type: ActionTypes.EliminarCarrito,
         value: producto,
       })
+      alert("Se ha eliminado el producto del carrito")
     }
 
     return (
@@ -73,9 +51,10 @@ const ProductoDetalle = () => {
             <h3>Rating: {producto.rating}</h3>
             <h3>Precio: {producto.price}</h3>
             <h3>Stock Disponible: {producto.stock}</h3>
-
-            {/*agregar al carrito */}
-            <button type="button" onClick={agregarCarrito} className="btn btn-primary">Agregar</button>
+            
+            <button type="button" className="btn btn-success" onClick={agregarCarrito}>Agregar</button>
+            <button type="button" className="btn btn-danger" onClick={eliminarCarrito}>Eliminar </button>
+            
         </div>
         </div>
       </div>
